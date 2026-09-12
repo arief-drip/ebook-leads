@@ -386,16 +386,6 @@ blockquote::before { content: "“"; display: block; color: #85952c; font-size: 
     inset 0 0 0 4.4rem var(--ink),
     inset 0 0 0 calc(4.4rem + 1px) rgba(216, 255, 62, .09);
 }
-.memory-anchor-label {
-  display: block;
-  margin-bottom: clamp(1.6rem, 4vw, 2.8rem);
-  color: var(--acid);
-  font-size: .68rem;
-  font-weight: 900;
-  letter-spacing: .18em;
-  line-height: 1.4;
-  text-transform: uppercase;
-}
 .content-blocks .memory-anchor p {
   position: relative;
   z-index: 1;
@@ -499,7 +489,6 @@ blockquote::before { content: "“"; display: block; color: #85952c; font-size: 
   .reader-content h1 { font-size: clamp(2.6rem, 14vw, 4rem); }
   .memory-anchor { padding: 1.75rem 1.4rem 2.1rem; }
   .memory-anchor::after { right: -5.5rem; bottom: -5.5rem; opacity: .65; }
-  .memory-anchor-label { margin-bottom: 1.4rem; }
   .content-blocks .memory-anchor p { font-size: clamp(1.65rem, 8.5vw, 2.25rem); }
   .diagnostic-grid { grid-template-columns: 1fr; }
   .reader-nav { grid-template-columns: 1fr; }
@@ -527,7 +516,7 @@ blockquote::before { content: "“"; display: block; color: #85952c; font-size: 
     color: #000;
   }
   .memory-anchor::after { display: none; }
-  .memory-anchor-label, .content-blocks .memory-anchor p { color: #000; }
+  .content-blocks .memory-anchor p { color: #000; }
 }
 
 @media (prefers-reduced-motion: reduce) {
