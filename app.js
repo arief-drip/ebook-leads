@@ -159,6 +159,7 @@
       if (block.type === "subhead") return `<h2>${escapeHTML(block.text)}</h2>`;
       if (block.type === "paragraph") return `<p>${escapeHTML(block.text)}</p>`;
       if (block.type === "quote") return `<blockquote>${escapeHTML(block.text)}</blockquote>`;
+      if (block.type === "anchor") return `<aside class="memory-anchor" role="note" aria-label="${escapeHTML(block.label)}"><span class="memory-anchor-label" aria-hidden="true">${escapeHTML(block.label)}</span><p>${escapeHTML(block.text)}</p></aside>`;
       if (block.type === "flow") return `<div class="flow-block" aria-label="Alur: ${escapeHTML(block.items.join(" ke "))}">${block.items.map((item) => `<div class="flow-step">${escapeHTML(item)}</div>`).join("")}</div>`;
       if (block.type === "timeline") return `<dl class="timeline">${block.items.map(([day, action]) => `<dt>${escapeHTML(day)}</dt><dd>${escapeHTML(action)}</dd>`).join("")}</dl>`;
       if (block.type === "diagnostic") return `<div class="diagnostic-grid">${block.groups.map((group) => `<section class="diagnostic-card"><h3>${escapeHTML(group.title)}</h3><p>${escapeHTML(group.intro)}</p><ul>${group.items.map((item) => `<li>${escapeHTML(item)}</li>`).join("")}</ul></section>`).join("")}</div>`;
