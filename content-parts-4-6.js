@@ -424,6 +424,431 @@ window.EBOOK_PARTS_4_6_EXPANDED = [
 // Keep the exported parts in manuscript order even when fragments are assembled incrementally.
 window.EBOOK_PARTS_4_6_EXPANDED.sort((a, b) => Number(a.number) - Number(b.number));
 
+// Memory anchors are applied after manuscript normalization so chapter numbers remain the stable editorial key.
+const PARTS_4_6_MEMORY_ANCHORS = {
+  22: [
+    {
+      afterParagraphStarting: "Campaign berdasarkan perjalanan setiap leads",
+      label: "Bab 22 — prinsip waktu evergreen",
+      text: "Evergreen mengikuti waktu masuk tiap lead, sehingga perjalanan dimulai dari Day 0 masing-masing."
+    },
+    {
+      afterParagraphStarting: "Automation yang tetap terasa personal",
+      label: "Bab 22 — aturan personalisasi",
+      text: "Personalisasi yang berguna memakai konteks kebutuhan, bukan sekadar menyisipkan nama ke pesan otomatis."
+    },
+    {
+      beforeSubhead: "Aksi bab ini",
+      label: "Bab 22 — fondasi automation sehat",
+      text: "Automation yang sehat memiliki pemicu, tujuan, kondisi keluar, dan pemilik percakapan yang jelas."
+    }
+  ],
+  23: [
+    {
+      afterParagraphStarting: "Evergreen campaign bekerja berbeda",
+      label: "Bab 23 — perbedaan waktu pengiriman",
+      text: "Broadcast mengikuti waktu bersama, sedangkan evergreen mengikuti tahap perjalanan setiap penerima."
+    },
+    {
+      afterParagraphStarting: "Keduanya dapat saling melengkapi",
+      label: "Bab 23 — aturan memilih model",
+      text: "Pilih broadcast untuk informasi berbasis tanggal dan evergreen untuk pemahaman yang perlu dibangun bertahap."
+    },
+    {
+      beforeSubhead: "Aksi bab ini",
+      label: "Bab 23 — prinsip pengiriman bertanggung jawab",
+      text: "Model pengiriman boleh berbeda, tetapi permission, relevansi, dan handoff tetap wajib dijaga."
+    }
+  ],
+  24: [
+    {
+      afterParagraphStarting: "Sambutan adalah orientasi",
+      label: "Bab 24 — tujuan welcome sequence",
+      text: "Welcome sequence pertama-tama harus memenuhi janji yang membuat lead memberikan kontaknya."
+    },
+    {
+      afterParagraphStarting: "Welcome sequence juga perlu mengajak interaksi",
+      label: "Bab 24 — aturan micro-commitment",
+      text: "Ajukan satu pertanyaan kecil yang mudah dijawab sekaligus berguna untuk memahami kebutuhan lead."
+    },
+    {
+      beforeSubhead: "Aksi bab ini",
+      label: "Bab 24 — prinsip sambutan efektif",
+      text: "Sambutan yang baik menyerahkan manfaat, mengatur ekspektasi, lalu membuka langkah berikutnya tanpa membebani."
+    }
+  ],
+  25: [
+    {
+      afterParagraphStarting: "Mengedukasi problem bukan menakut-nakuti",
+      label: "Bab 25 — tujuan edukasi",
+      text: "Edukasi memberi lead bahasa untuk memahami masalahnya tanpa menakut-nakuti atau menyamarkan promosi."
+    },
+    {
+      afterParagraphStarting: "Berikan quick win",
+      label: "Bab 25 — aturan quick win",
+      text: "Quick win harus cukup kecil untuk dicoba, tetapi cukup relevan untuk membuktikan cara berpikir Anda."
+    },
+    {
+      beforeSubhead: "Aksi bab ini",
+      label: "Bab 25 — prinsip education sequence",
+      text: "Education sequence yang kuat menggerakkan lead dari diagnosis menuju keputusan yang lebih beralasan."
+    }
+  ],
+  26: [
+    {
+      afterParagraphStarting: "Case study menjelaskan konteks",
+      label: "Bab 26 — fondasi trust",
+      text: "Trust tumbuh ketika bukti menunjukkan konteks, proses, hasil, dan batasannya secara jujur."
+    },
+    {
+      afterParagraphStarting: "Pilih bukti berdasarkan risiko",
+      label: "Bab 26 — aturan memilih bukti",
+      text: "Pilih bentuk bukti berdasarkan risiko yang sedang dirasakan lead, bukan berdasarkan materi yang paling mengesankan."
+    },
+    {
+      beforeSubhead: "Aksi bab ini",
+      label: "Bab 26 — prinsip bukti relevan",
+      text: "Satu bukti relevan yang dapat dinilai lebih berguna daripada banyak klaim tanpa konteks."
+    }
+  ],
+  27: [
+    {
+      afterParagraphStarting: "Keberatan bukan selalu penolakan",
+      label: "Bab 27 — makna keberatan",
+      text: "Keberatan adalah informasi tentang keraguan lead, bukan lawan yang harus dikalahkan."
+    },
+    {
+      afterParagraphStarting: "Untuk menjawab keberatan sebelum sales",
+      label: "Bab 27 — aturan klarifikasi",
+      text: "Klarifikasi dahulu makna keberatan sebelum memilih bukti, penjelasan, atau langkah tindak lanjut."
+    },
+    {
+      beforeSubhead: "Aksi bab ini",
+      label: "Bab 27 — prinsip objection handling",
+      text: "Objection handling yang sehat membantu keputusan yang tepat, termasuk ketika solusi Anda memang tidak cocok."
+    }
+  ],
+  28: [
+    {
+      afterParagraphStarting: "Transition dari education menuju offer",
+      label: "Bab 28 — transisi menuju offer",
+      text: "Conversion dimulai ketika edukasi beralih secara logis menuju offer yang jelas dan relevan."
+    },
+    {
+      afterParagraphStarting: "Contoh toko hampers",
+      label: "Bab 28 — aturan CTA dan follow-up",
+      text: "Gunakan satu CTA yang sesuai tahap keputusan, lalu tentukan tindak lanjut berdasarkan respons lead."
+    },
+    {
+      beforeSubhead: "Aksi bab ini",
+      label: "Bab 28 — prinsip offer kuat",
+      text: "Offer yang kuat memperjelas manfaat, bukti, komitmen, dan langkah mulai tanpa menciptakan urgensi palsu."
+    }
+  ],
+  29: [
+    {
+      afterParagraphStarting: "Leads yang belum membeli bukan berarti leads buruk",
+      label: "Bab 29 — nilai lead belum siap",
+      text: "Lead yang belum membeli dapat tetap bernilai ketika konteks, permission, dan relevansinya masih terjaga."
+    },
+    {
+      afterParagraphStarting: "Input long-term nurturing",
+      label: "Bab 29 — aturan kiriman jangka panjang",
+      text: "Setiap kiriman jangka panjang harus punya alasan mandiri untuk dibuka, meski penerima belum siap membeli."
+    },
+    {
+      beforeSubhead: "Aksi bab ini",
+      label: "Bab 29 — prinsip top-of-mind",
+      text: "Top-of-mind dibangun melalui manfaat yang konsisten, bukan melalui frekuensi pesan yang ekstrem."
+    }
+  ],
+  30: [
+    {
+      afterParagraphStarting: "Leads lama adalah orang yang pernah opt-in",
+      label: "Bab 30 — tujuan reactivation",
+      text: "Reactivation menguji apakah hubungan lama masih relevan dengan konteks baru yang layak."
+    },
+    {
+      afterParagraphStarting: "Contoh hipotetis: studio foto",
+      label: "Bab 30 — aturan segmentasi reactivation",
+      text: "Bedakan lead lama, customer lama, dan percakapan terhenti sebelum menentukan pesan atau penawaran."
+    },
+    {
+      beforeSubhead: "Aksi bab ini",
+      label: "Bab 30 — prinsip batas reactivation",
+      text: "Reactivation yang sehat membatasi sentuhan dan menerima jawaban tidak relevan sebagai pembaruan data."
+    }
+  ],
+  31: [
+    {
+      afterParagraphStarting: "Posisi Dripsender dalam marketing funnel",
+      label: "Bab 31 — posisi Dripsender",
+      text: "Dripsender bekerja setelah seseorang menjadi lead, bukan sebagai sumber nomor atau audience."
+    },
+    {
+      afterParagraphStarting: "Contoh toko furnitur",
+      label: "Bab 31 — pembagian peran sistem dan manusia",
+      text: "Gunakan automation untuk konsistensi follow-up, sementara keputusan, reply, dan layanan tetap dimiliki manusia."
+    },
+    {
+      beforeSubhead: "Aksi bab ini",
+      label: "Bab 31 — prinsip batas teknologi",
+      text: "Teknologi hanya memperkuat alur yang sudah memiliki permission, konteks, batas fungsi, dan owner."
+    }
+  ],
+  32: [
+    {
+      afterParagraphStarting: "Landing page dan form biasanya menghasilkan data",
+      label: "Bab 32 — isi integrasi sehat",
+      text: "Integrasi yang sehat memindahkan kontak bersama konteks opt-in dan rute follow-up yang tepat."
+    },
+    {
+      afterParagraphStarting: "Contoh kursus barista",
+      label: "Bab 32 — aturan pengujian integrasi",
+      text: "Uji alur dari form hingga reply agar data, List, sequence, delay, dan opt-out benar-benar bekerja."
+    },
+    {
+      beforeSubhead: "Aksi bab ini",
+      label: "Bab 32 — prinsip permission integrasi",
+      text: "Kemampuan mengimpor kontak tidak pernah menggantikan kejelasan sumber, permission, dan tujuan pesan."
+    }
+  ],
+  33: [
+    {
+      afterParagraphStarting: "Segmentasi berdasarkan source",
+      label: "Bab 33 — fungsi segmentasi",
+      text: "Segmentasi berguna hanya ketika perbedaan data mengubah pesan, offer, owner, atau tindakan berikutnya."
+    },
+    {
+      afterParagraphStarting: "Contoh jasa fotografi",
+      label: "Bab 33 — aturan membangun List",
+      text: "Mulailah dengan sedikit List yang definisinya jelas, lalu tambah hanya saat perlakuannya memang berbeda."
+    },
+    {
+      beforeSubhead: "Aksi bab ini",
+      label: "Bab 33 — prinsip database tersegmentasi",
+      text: "Database yang tersegmentasi harus memudahkan keputusan operasional, bukan sekadar mengumpulkan banyak label."
+    }
+  ],
+  34: [
+    {
+      afterParagraphStarting: "Menentukan tujuan campaign",
+      label: "Bab 34 — titik awal campaign",
+      text: "Campaign pertama harus dimulai dari perubahan yang diinginkan, bukan dari jumlah pesan yang akan dikirim."
+    },
+    {
+      afterParagraphStarting: "Contoh bengkel detailing",
+      label: "Bab 34 — aturan testing sequence",
+      text: "Uji setiap jalur penting dengan kontak internal sebelum traffic nyata memasuki sequence."
+    },
+    {
+      beforeSubhead: "Aksi bab ini",
+      label: "Bab 34 — prinsip campaign awal",
+      text: "Sequence pendek yang terukur memberi pembelajaran lebih berguna daripada automation panjang yang belum teruji."
+    }
+  ],
+  35: [
+    {
+      afterParagraphStarting: "Contoh ini sengaja memakai Day 0 sampai Day 14",
+      label: "Bab 35 — status framework ilustratif",
+      text: "Timeline 14 hari ini adalah framework ilustratif, bukan resep universal untuk setiap bisnis."
+    },
+    {
+      afterParagraphStarting: "Contoh hipotetis untuk kursus pengelolaan stok",
+      label: "Bab 35 — aturan menyesuaikan sentuhan",
+      text: "Hapus atau pindahkan sentuhan ketika fungsi pesan, siklus keputusan, atau respons lead menuntutnya."
+    },
+    {
+      beforeSubhead: "Aksi bab ini",
+      label: "Bab 35 — prinsip jadwal kontekstual",
+      text: "Jadwal harus mengikuti konteks dan percakapan, bukan memaksa setiap lead melewati seluruh slot."
+    }
+  ],
+  36: [
+    {
+      afterParagraphStarting: "New Lead Campaign menyambut lead",
+      label: "Bab 36 — alasan banyak campaign",
+      text: "Banyak campaign berguna ketika setiap journey memiliki trigger, tujuan, dan tahap lead yang berbeda."
+    },
+    {
+      afterParagraphStarting: "Contoh software kasir",
+      label: "Bab 36 — aturan prioritas campaign",
+      text: "Tentukan prioritas dan aturan perpindahan sebelum beberapa sequence berpotensi menyentuh orang yang sama."
+    },
+    {
+      beforeSubhead: "Aksi bab ini",
+      label: "Bab 36 — prinsip arsitektur automation",
+      text: "Arsitektur automation dinilai dari ketepatan perjalanan lead, bukan dari banyaknya campaign aktif."
+    }
+  ],
+  37: [
+    {
+      afterParagraphStarting: "Reply adalah sinyal pertama",
+      label: "Bab 37 — pemicu intervensi manusia",
+      text: "Manusia harus masuk ketika respons membutuhkan diagnosis, pertimbangan, atau keputusan yang kontekstual."
+    },
+    {
+      afterParagraphStarting: "Contoh kontraktor",
+      label: "Bab 37 — aturan handoff",
+      text: "Setiap handoff perlu membawa konteks lengkap serta cara teruji untuk mengendalikan sequence."
+    },
+    {
+      beforeSubhead: "Aksi bab ini",
+      label: "Bab 37 — prinsip pembagian peran",
+      text: "Automation mempersiapkan percakapan; manusia bertanggung jawab atas nuansa, keputusan, dan pengalaman lead."
+    }
+  ],
+  38: [
+    {
+      afterParagraphStarting: "CTA berbasis percakapan",
+      label: "Bab 38 — tujuan CTA percakapan",
+      text: "CTA percakapan mengundang jawaban yang membantu lead dan sales bergerak ke langkah berikutnya."
+    },
+    {
+      afterParagraphStarting: "Menjaga conversation tetap manusiawi",
+      label: "Bab 38 — aturan membaca buying signal",
+      text: "Nilai buying signal dari isi respons, lalu serahkan source, riwayat, dan kebutuhan kepada owner."
+    },
+    {
+      beforeSubhead: "Aksi bab ini",
+      label: "Bab 38 — prinsip percakapan manusiawi",
+      text: "Percakapan terasa manusiawi ketika respons membaca konteks, mengakui detail, dan tidak memaksakan script."
+    }
+  ],
+  39: [
+    {
+      afterParagraphStarting: "Campaign adalah satu aktivitas dalam sistem",
+      label: "Bab 39 — definisi sistem",
+      text: "Sistem menghubungkan output satu tahap menjadi input yang berguna bagi tahap berikutnya."
+    },
+    {
+      afterParagraphStarting: "Contoh distributor bahan kue",
+      label: "Bab 39 — aturan membangun jalur minimum",
+      text: "Bangun satu jalur minimum, ukur kebocorannya, lalu perbaiki bottleneck sebelum menambah volume."
+    },
+    {
+      beforeSubhead: "Aksi bab ini",
+      label: "Bab 39 — prinsip loop belajar",
+      text: "Mesin bertumbuh melalui loop belajar yang terus memperbaiki offer, pesan, sales, dan pengalaman customer."
+    }
+  ],
+  40: [
+    {
+      afterParagraphStarting: "Traffic adalah jumlah kunjungan",
+      label: "Bab 40 — syarat metrik berguna",
+      text: "Metrik hanya berguna ketika formula, denominator, periode, cohort, dan sumber datanya dinyatakan konsisten."
+    },
+    {
+      afterParagraphStarting: "Contoh berikut hipotetis. Jika 1.000 pengunjung",
+      label: "Bab 40 — aturan membandingkan angka",
+      text: "Bandingkan angka hanya setelah definisi biaya, event, attribution, dan jendela waktunya diselaraskan."
+    },
+    {
+      beforeSubhead: "Aksi bab ini",
+      label: "Bab 40 — prinsip konteks metrik",
+      text: "Arti sebuah angka bergantung pada definisi, cohort, dan konteks pembandingnya, bukan label baik atau buruk."
+    }
+  ],
+  41: [
+    {
+      afterParagraphStarting: "Mulai dengan cohort dan periode yang sama",
+      label: "Bab 41 — fondasi diagnosis funnel",
+      text: "Diagnosis funnel dimulai dari cohort, periode, dan denominator yang sama di setiap rasio."
+    },
+    {
+      afterParagraphStarting: "Contoh berikut hipotetis. Dari 2.000 visitor",
+      label: "Bab 41 — aturan menguji penyebab",
+      text: "Korelasi bukan bukti penyebab; ubah satu variabel pada satu waktu untuk menguji hipotesis."
+    },
+    {
+      beforeSubhead: "Aksi bab ini",
+      label: "Bab 41 — prinsip memilih bottleneck",
+      text: "Perbaiki bottleneck berdasarkan data dan konteks operasional, bukan berdasarkan satu benchmark universal."
+    }
+  ],
+  42: [
+    {
+      afterParagraphStarting: "Jangan scale volume sebelum memperbaiki relevansi",
+      label: "Bab 42 — prasyarat scaling sehat",
+      text: "Scaling sehat dimulai setelah relevansi, permission, kapasitas layanan, dan pengalaman customer mampu menahan volume."
+    },
+    {
+      afterParagraphStarting: "Jangan merusak brand demi conversion jangka pendek",
+      label: "Bab 42 — aturan menaikkan volume",
+      text: "Naikkan satu channel atau segmen, lalu pantau kualitas cohort dan siapkan rollback jika menurun."
+    },
+    {
+      beforeSubhead: "Aksi bab ini",
+      label: "Bab 42 — prinsip menjaga brand",
+      text: "Pertumbuhan yang menjaga brand mengutamakan relevansi jangka panjang di atas conversion sesaat."
+    }
+  ],
+  43: [
+    {
+      afterParagraphStarting: "Database sebagai aset bukan file nomor",
+      label: "Bab 43 — definisi database sebagai aset",
+      text: "Database menjadi aset ketika kontak memiliki permission, konteks, status, dan proses tindak lanjut yang berguna."
+    },
+    {
+      afterParagraphStarting: "Semakin lama sistem berjalan",
+      label: "Bab 43 — syarat terjadinya compounding",
+      text: "Compounding terjadi hanya jika setiap interaksi menghasilkan pembelajaran yang benar-benar memperbaiki sistem."
+    },
+    {
+      beforeSubhead: "Aksi bab ini",
+      label: "Bab 43 — prinsip nilai jangka panjang",
+      text: "Nilai jangka panjang tumbuh dari hubungan yang dipelihara, bukan dari jumlah kontak yang dibiarkan menumpuk."
+    }
+  ]
+};
+
+function insertPartMemoryAnchor(chapter, anchor) {
+  const locatorEntries = ["afterParagraphStarting", "beforeSubhead"].filter((key) => anchor[key]);
+  if (locatorEntries.length !== 1) {
+    throw new Error(`Memory anchor Bab ${chapter.number} harus memiliki tepat satu locator.`);
+  }
+
+  let targetIndex = -1;
+  let insertionIndex = -1;
+
+  if (anchor.afterParagraphStarting) {
+    targetIndex = chapter.blocks.findIndex((block) =>
+      block.type === "paragraph" && block.text.startsWith(anchor.afterParagraphStarting)
+    );
+    insertionIndex = targetIndex + 1;
+  } else {
+    targetIndex = chapter.blocks.findIndex((block) =>
+      block.type === "subhead" && block.text === anchor.beforeSubhead
+    );
+    insertionIndex = targetIndex;
+  }
+
+  if (targetIndex < 0) {
+    throw new Error(`Locator memory anchor tidak ditemukan pada Bab ${chapter.number}: ${anchor.label}`);
+  }
+
+  chapter.blocks.splice(insertionIndex, 0, {
+    type: "anchor",
+    label: anchor.label,
+    text: anchor.text
+  });
+}
+
+const parts46ChaptersByNumber = new Map(
+  window.EBOOK_PARTS_4_6_EXPANDED
+    .flatMap((part) => part.chapters)
+    .map((chapter) => [Number(chapter.number), chapter])
+);
+
+Object.entries(PARTS_4_6_MEMORY_ANCHORS).forEach(([chapterNumber, anchors]) => {
+  const chapter = parts46ChaptersByNumber.get(Number(chapterNumber));
+  if (!chapter) {
+    throw new Error(`Bab ${chapterNumber} tidak ditemukan saat menerapkan memory anchor.`);
+  }
+
+  anchors.forEach((anchor) => insertPartMemoryAnchor(chapter, anchor));
+});
+
 window.EBOOK_CLOSING_EXPANDED = {
   id: "penutup",
   label: "Penutup",

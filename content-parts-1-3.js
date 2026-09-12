@@ -557,3 +557,161 @@ window.EBOOK_PARTS_1_3_EXPANDED.push({
     }
   }
 }
+
+/* Editorial memory anchors are inserted after every content-enrichment pass. */
+{
+  const anchorPlans = {
+    1: [
+      { label: "Bab 1 · Definisi lead", text: "Lead lahir ketika sebuah kontak membawa minat, izin, dan konteks yang dapat ditindaklanjuti.", after: { type: "paragraph", startsWith: "Database besar belum tentu database bernilai." } },
+      { label: "Bab 1 · Aturan sebelum menghubungi", text: "Sebelum menghubungi seseorang, pastikan Anda dapat menjelaskan sumber nomor dan alasan pesan secara wajar.", after: { type: "paragraph", startsWith: "Bayangkan vendor katering kantor." } },
+      { label: "Bab 1 · Prinsip database bernilai", text: "Database yang berguna membantu tim memilih tindak lanjut, bukan sekadar memamerkan jumlah kontak.", beforeAction: true }
+    ],
+    2: [
+      { label: "Bab 2 · Fungsi status lead", text: "Status lead menunjukkan posisi hubungan, sehingga setiap tahap memerlukan tujuan dan tindakan yang berbeda.", after: { type: "flow", firstItem: "Stranger" } },
+      { label: "Bab 2 · Aturan perubahan status", text: "Perbarui status hanya ketika perilaku yang dapat diamati membuktikan bahwa perjalanan lead telah berubah.", after: { type: "paragraph", startsWith: "Sebuah tempat kursus bahasa" } },
+      { label: "Bab 2 · Prinsip bahasa bersama", text: "Definisi tahap yang konsisten menjaga marketing, sales, dan layanan bergerak dengan bahasa yang sama.", beforeAction: true }
+    ],
+    3: [
+      { label: "Bab 3 · Nilai perhatian", text: "Perhatian adalah pinjaman yang harus dibayar kembali dengan pesan relevan, jelas, dan berguna.", after: { type: "paragraph", startsWith: "Customer semakin selektif" } },
+      { label: "Bab 3 · Aturan relevansi pesan", text: "Sesuaikan pesan dengan kebutuhan, tahap keputusan, dan sinyal perilaku sebelum menentukan waktu pengiriman.", after: { type: "paragraph", startsWith: "Misalnya toko perlengkapan bayi" } },
+      { label: "Bab 3 · Prinsip broadcast", text: "Broadcast tetap berguna ketika konteksnya luas, penerimanya tepat, dan ekspektasinya sudah terbentuk.", beforeAction: true }
+    ],
+    4: [
+      { label: "Bab 4 · Batas permission", text: "Permission memberi kesempatan berkomunikasi, tetapi ekspektasi penerima menentukan batas penggunaannya.", after: { type: "paragraph", startsWith: "Opt-in adalah tindakan seseorang" } },
+      { label: "Bab 4 · Aturan penggunaan izin", text: "Kirim hanya topik, kanal, dan tindak lanjut yang selaras dengan persetujuan yang diberikan.", after: { type: "paragraph", startsWith: "Context-based marketing" } },
+      { label: "Bab 4 · Prinsip menjaga kepercayaan", text: "Kepercayaan tumbuh ketika bisnis memenuhi janji komunikasi dan memudahkan penerima mengubah pilihannya.", beforeAction: true }
+    ],
+    5: [
+      { label: "Bab 5 · Definisi lead machine", text: "Lead machine menghubungkan traffic, offer, capture, database, follow-up, dan conversion menjadi satu alur.", after: { type: "flow", firstItem: "Traffic" } },
+      { label: "Bab 5 · Aturan memperbaiki mesin", text: "Perbaiki sambungan yang paling bocor sebelum menambah channel, tool, atau automation baru.", after: { type: "paragraph", startsWith: "Klinik perawatan kulit" } },
+      { label: "Bab 5 · Prinsip mesin utuh", text: "Mesin lead yang sederhana tetapi utuh lebih bernilai daripada banyak komponen yang tidak tersambung.", beforeAction: true }
+    ],
+    6: [
+      { label: "Bab 6 · Pertukaran nilai lead magnet", text: "Lead magnet menukar kemajuan kecil yang relevan dengan izin dan konteks untuk tindak lanjut.", after: { type: "paragraph", startsWith: "Mini course memberikan" } },
+      { label: "Bab 6 · Aturan memilih format", text: "Pilih format berdasarkan pekerjaan yang ingin diselesaikan pengguna, bukan berdasarkan tren produksi konten.", after: { type: "paragraph", startsWith: "Contoh produk fisik" } },
+      { label: "Bab 6 · Prinsip kemajuan pengguna", text: "Lead magnet terbaik memperpendek jarak antara kebingungan calon customer dan keputusan berikutnya.", beforeAction: true }
+    ],
+    7: [
+      { label: "Bab 7 · Definisi Content-to-Lead", text: "Content-to-Lead mengubah perhatian menjadi hubungan ketika konten menawarkan langkah lanjutan yang relevan.", after: { type: "paragraph", startsWith: "Instagram dan TikTok" } },
+      { label: "Bab 7 · Aturan menulis CTA", text: "Hubungkan setiap CTA dengan masalah yang baru dibahas dan manfaat yang akan diterima audience.", after: { type: "paragraph", startsWith: "Gunakan rangkaian konten" } },
+      { label: "Bab 7 · Prinsip konten sebagai pintu", text: "Konten bekerja sebagai pintu ketika interaksi berniat tinggi masuk ke workflow yang jelas.", beforeAction: true }
+    ],
+    8: [
+      { label: "Bab 8 · Definisi Search-to-Lead", text: "Search-to-Lead menangkap kebutuhan yang sudah dinyatakan melalui query, lalu menawarkan langkah yang sepadan.", after: { type: "paragraph", startsWith: "Marketplace juga berfungsi" } },
+      { label: "Bab 8 · Aturan mencocokkan intent", text: "Cocokkan intent pencarian dengan halaman, informasi, dan CTA yang membantu pengguna menyaring pilihannya.", after: { type: "paragraph", startsWith: "Bengkel spesialis transmisi" } },
+      { label: "Bab 8 · Prinsip menangkap permintaan", text: "Search berhasil ketika jawaban yang tepat bertemu permintaan yang tepat pada saat dibutuhkan.", beforeAction: true }
+    ],
+    9: [
+      { label: "Bab 9 · Fungsi iklan", text: "Iklan membeli distribusi dan perhatian awal, bukan kepastian mendapatkan customer.", after: { type: "paragraph", startsWith: "Click-to-WhatsApp membawa" } },
+      { label: "Bab 9 · Aturan menilai campaign", text: "Nilai campaign sampai qualified lead dan conversion, jangan berhenti pada klik atau CPL.", after: { type: "paragraph", startsWith: "Penyedia software kasir" } },
+      { label: "Bab 9 · Prinsip keselarasan funnel", text: "Creative, offer, capture, dan follow-up harus menyampaikan janji yang sama sepanjang funnel.", beforeAction: true }
+    ],
+    10: [
+      { label: "Bab 10 · Syarat peserta menjadi lead", text: "Peserta menjadi lead ketika minat, identitas, dan permission tercatat dalam konteks pengalaman bersama.", after: { type: "paragraph", startsWith: "Event offline menambahkan" } },
+      { label: "Bab 10 · Aturan merancang acara", text: "Rancang registrasi, pengalaman, dan follow-up sebagai satu perjalanan sebelum acara dimulai.", after: { type: "paragraph", startsWith: "Contoh: toko bahan baking" } },
+      { label: "Bab 10 · Prinsip hubungan komunitas", text: "Komunitas menghasilkan hubungan ketika partisipasi memberi nilai dan membuka next action yang pantas.", beforeAction: true }
+    ],
+    11: [
+      { label: "Bab 11 · Nilai partnership", text: "Partnership memperluas distribusi dengan meminjam kepercayaan, sehingga permission harus tetap terlihat dan terjaga.", after: { type: "paragraph", startsWith: "Influencer membawa perhatian" } },
+      { label: "Bab 11 · Aturan menguji partner", text: "Uji partner melalui pilot kecil yang mengukur kecocokan lead, attribution, dan beban operasional.", after: { type: "paragraph", startsWith: "Jasa pembukuan berpartner" } },
+      { label: "Bab 11 · Prinsip kolaborasi sehat", text: "Kolaborasi yang sehat menjelaskan nilai, pemilik hubungan, dan tanggung jawab setiap pihak.", beforeAction: true }
+    ],
+    12: [
+      { label: "Bab 12 · Definisi Offline-to-Online", text: "Offline-to-Online mengubah momen fisik menjadi kelanjutan digital yang membawa konteks asal.", after: { type: "paragraph", startsWith: "Invoice muncul setelah transaksi" } },
+      { label: "Bab 12 · Aturan memasangkan touchpoint", text: "Pasangkan setiap touchpoint dengan promise, destination, dan output yang sesuai intent pengguna.", after: { type: "paragraph", startsWith: "Produsen furnitur menaruh" } },
+      { label: "Bab 12 · Prinsip jembatan offline", text: "Jembatan offline berhasil ketika kelanjutan hubungan terasa mudah dalam kondisi nyata pengguna.", beforeAction: true }
+    ],
+    13: [
+      { label: "Bab 13 · Nilai customer lama", text: "Customer lama membawa riwayat kebutuhan dan pengalaman, sehingga hubungan tidak perlu dimulai dari nol.", after: { type: "paragraph", startsWith: "Referral terjadi ketika customer" } },
+      { label: "Bab 13 · Aturan lifecycle customer", text: "Sesuaikan repeat, cross-sell, upsell, atau referral dengan lifecycle dan pengalaman aktual customer.", after: { type: "paragraph", startsWith: "Contoh: roastery mencatat" } },
+      { label: "Bab 13 · Prinsip pertumbuhan customer", text: "Pertumbuhan dari customer dimulai dengan hasil yang baik, lalu dilanjutkan oleh ajakan yang relevan.", beforeAction: true }
+    ],
+    15: [
+      { label: "Bab 15 · Janji lead funnel", text: "Lead funnel menjaga satu janji saat seseorang bergerak dari traffic hingga masuk database.", after: { type: "paragraph", startsWith: "Thank-you page mengonfirmasi" } },
+      { label: "Bab 15 · Aturan mengukur sambungan", text: "Ukur setiap sambungan funnel secara terpisah agar sumber kebocoran dapat ditemukan dengan tepat.", after: { type: "paragraph", startsWith: "Contoh: layanan laundry hotel" } },
+      { label: "Bab 15 · Prinsip funnel andal", text: "Funnel yang andal mempertahankan konteks, memenuhi promise, dan menyediakan jalan pulih ketika terjadi error.", beforeAction: true }
+    ],
+    16: [
+      { label: "Bab 16 · Definisi kualitas lead", text: "Lead berkualitas menggabungkan fit, intent, timing, dan potensi memperoleh hasil wajar dari solusi.", after: { type: "paragraph", startsWith: "Budget adalah kemampuan" } },
+      { label: "Bab 16 · Aturan memakai scoring", text: "Gunakan scoring untuk memprioritaskan tindakan, lalu verifikasi skornya melalui percakapan dan hasil customer.", after: { type: "paragraph", startsWith: "Studio produksi video" } },
+      { label: "Bab 16 · Prinsip kecocokan sehat", text: "Kualitas lead harus melindungi waktu tim sekaligus menjaga calon customer dari solusi yang tidak cocok.", beforeAction: true }
+    ],
+    17: [
+      { label: "Bab 17 · Definisi follow-up gap", text: "Follow-up gap muncul ketika sinyal minat tidak menerima respons, owner, atau langkah berikutnya.", after: { type: "paragraph", startsWith: "Leads masuk tetapi tidak pernah" } },
+      { label: "Bab 17 · Aturan audit kehilangan", text: "Rekonstruksi timeline lead untuk membedakan kehilangan karena ketidakcocokan dari kebocoran proses.", after: { type: "paragraph", startsWith: "Wedding organizer menerima" } },
+      { label: "Bab 17 · Prinsip keputusan lead", text: "Sistem follow-up memastikan setiap lead yang cocok memperoleh keputusan, bukan dibiarkan hilang tanpa status.", beforeAction: true }
+    ],
+    18: [
+      { label: "Bab 18 · Temperatur dan fit", text: "Temperatur lead menggambarkan kesiapan saat ini, sedangkan fit menunjukkan nilai kecocokan jangka panjang.", after: { type: "paragraph", startsWith: "Timing pembelian sering" } },
+      { label: "Bab 18 · Aturan menyesuaikan perjalanan", text: "Sesuaikan konten dan CTA dengan awareness, timing, serta perubahan perilaku yang benar-benar teramati.", after: { type: "paragraph", startsWith: "Pemilik kos membaca" } },
+      { label: "Bab 18 · Prinsip ritme lead", text: "Lead bergerak dengan ritme berbeda, sehingga nurturing harus menyediakan jalur maju dan ruang menunggu.", beforeAction: true }
+    ],
+    19: [
+      { label: "Bab 19 · Cara trust tumbuh", text: "Attention membuka pintu, tetapi trust tumbuh dari edukasi, bukti, konsistensi, dan pengalaman kecil.", after: { type: "paragraph", startsWith: "Awareness memperoleh perhatian" } },
+      { label: "Bab 19 · Aturan menampilkan bukti", text: "Tampilkan bukti ketika ketidakpastian muncul, lalu hubungkan fitur dengan outcome yang dapat dibayangkan.", after: { type: "paragraph", startsWith: "Contoh: produsen frozen food" } },
+      { label: "Bab 19 · Prinsip keinginan sehat", text: "Keinginan yang sehat tumbuh dari kecocokan dan kejelasan, bukan tekanan atau janji berlebihan.", beforeAction: true }
+    ],
+    20: [
+      { label: "Bab 20 · Definisi nurturing", text: "Nurturing membantu lead memahami masalah, menilai solusi, dan membangun kesiapan secara bertahap.", after: { type: "paragraph", startsWith: "Social proof membantu" } },
+      { label: "Bab 20 · Aturan menyusun pesan", text: "Setiap pesan harus memberi nilai baru, alasan waktu yang jelas, dan pilihan berikutnya.", after: { type: "paragraph", startsWith: "Frekuensi mengikuti ekspektasi" } },
+      { label: "Bab 20 · Prinsip sequence responsif", text: "Sequence yang baik merespons perilaku lead dan berhenti ketika konteks hubungan sudah berubah.", beforeAction: true }
+    ],
+    21: [
+      { label: "Bab 21 · Fungsi follow-up window", text: "Follow-up window memberi setiap waktu tujuan berbeda, dari fulfillment awal hingga nurturing jangka panjang.", after: { type: "timeline", firstItem: "5 menit pertama" } },
+      { label: "Bab 21 · Aturan mengubah ritme", text: "Ubah ritme ketika lead membalas, membeli, menunda, atau memilih berhenti menerima komunikasi.", after: { type: "paragraph", startsWith: "Contoh: lembaga kursus" } },
+      { label: "Bab 21 · Prinsip konsistensi relevan", text: "Konsistensi berarti proses tidak melupakan lead, sementara relevansi memastikan pesan mengikuti status terbaru.", beforeAction: true }
+    ]
+  };
+
+  const prototypeAnchors = [
+    "Lead magnet interaktif mengubah input pengguna menjadi hasil yang relevan—bukan sekadar file untuk diunduh.",
+    "AI bukan label ajaib. Nilainya baru jelas ketika input, proses, output, dan batasannya dijelaskan.",
+    "Interaksi bukan tujuan. Personalisasi harus menambah relevansi—bukan kerumitan."
+  ];
+
+  const chapters = window.EBOOK_PARTS_1_3_EXPANDED.flatMap((part) => part.chapters);
+  const chapter14 = chapters.find((chapter) => chapter.number === 14);
+  const chapter14Anchors = chapter14.blocks.filter((block) => block.type === "anchor").map((block) => block.text);
+
+  if (chapter14Anchors.length !== 3 || chapter14Anchors.some((text, index) => text !== prototypeAnchors[index])) {
+    throw new Error("Chapter 14 prototype anchors changed before editorial enrichment.");
+  }
+
+  function matchesSelector(block, selector) {
+    if (block.type !== selector.type) return false;
+    if (selector.startsWith) return typeof block.text === "string" && block.text.startsWith(selector.startsWith);
+    if (selector.firstItem) {
+      const firstItem = Array.isArray(block.items) ? block.items[0] : undefined;
+      return (Array.isArray(firstItem) ? firstItem[0] : firstItem) === selector.firstItem;
+    }
+    return true;
+  }
+
+  function insertionIndex(chapter, anchor) {
+    if (anchor.beforeAction) {
+      const actionIndex = chapter.blocks.findIndex((block) => block.type === "subhead" && block.text === "Aksi bab ini");
+      if (actionIndex < 0) throw new Error(`Missing Aksi bab ini in chapter ${chapter.number}.`);
+      return actionIndex;
+    }
+
+    const matchedIndex = chapter.blocks.findIndex((block) => matchesSelector(block, anchor.after));
+    if (matchedIndex < 0) throw new Error(`Missing anchor placement target in chapter ${chapter.number}.`);
+    return matchedIndex + 1;
+  }
+
+  for (const chapter of chapters) {
+    if (chapter.number === 14) continue;
+    const plan = anchorPlans[chapter.number];
+    if (!plan || plan.length !== 3) throw new Error(`Missing three-anchor plan for chapter ${chapter.number}.`);
+
+    const insertions = plan.map((anchor) => ({ index: insertionIndex(chapter, anchor), anchor }));
+    insertions.sort((a, b) => b.index - a.index);
+    for (const insertion of insertions) {
+      chapter.blocks.splice(insertion.index, 0, {
+        type: "anchor",
+        label: insertion.anchor.label,
+        text: insertion.anchor.text
+      });
+    }
+  }
+}
